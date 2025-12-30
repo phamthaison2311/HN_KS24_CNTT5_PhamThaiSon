@@ -27,6 +27,9 @@ CREATE TABLE Borrow (
 -- Câu 2
 ALTER TABLE Reader ADD email varchar(100) unique;
 ALTER TABLE Book MODIFY author varchar(150);
+ALTER TABLE Borrow
+ADD CONSTRAINT chk_return
+CHECK (return_date IS NULL OR return_date >= borrow_date);
 
 -- Câu 3
 INSERT INTO Reader (reader_name, phone, email, register_date)
